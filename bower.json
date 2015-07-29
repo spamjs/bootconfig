@@ -1,0 +1,17 @@
+{
+	"name": "webmodules-bootconfig",
+	"main": "bootconfig.js",
+	"description": "Module Config Editor",
+	"authors": ["lalit.tanwar07@gmail.com"],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/webmodule/bootconfig.git"
+	},
+	"dependencies": {
+		"webmodules-bootconfig": "latest",
+		"webmodules-jqrouter": "latest",
+		"spamjs-view": "latest"
+	},
+	"keywords": ["bootloader"],
+	"license": "MIT"
+}

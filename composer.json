@@ -1,0 +1,19 @@
+{
+	"name": "webmodules/bootconfig",
+	"type": "library",
+	"description": "Module loader",
+	"keywords": ["rudra", "API"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lalit Tanwar",
+			"email": "lalit.tanwar07@gmail.com",
+			"homepage": "http://lalittanwar.com"
+		}
+	],
+	"require": {
+		"webmodules/bootloader": ">=0.0.0",
+		"webmodules/jqrouter": ">=0.0.0",
+		"spamjs/view": ">=0.0.0"
+	}
+}
