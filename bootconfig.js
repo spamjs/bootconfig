@@ -7,20 +7,36 @@ define({
 	jqrouter.start(bootloader.config().appContext);
 	
 	return {
+		routerBase : "boot",
 		routerEvents : {
-			"/bootconfig" : "loadbootconfig"
+			"/config" : "loadbootconfig"
+		},
+		events : {
+			"click #saveConfig" : "saveConfig"
 		},
 		_init_ : function(){
-			this.router = jqrouter.instance(this);
-			//this.loadbootconfig();
+			if(this.options.routerBase){
+				this.routerBase = this.options.routerBase;
+				this.router = jqrouter.instance(this);
+			} else {
+				this.loadbootconfig();
+			}
 		},
 		loadbootconfig : function(){
-			config = JSON.parse(JSON.stringify(bootloader.config()));
+			var config  = JSON.parse(window.localStorage.getItem("bootConfig"));
+			if(!config){
+				config = JSON.parse(JSON.stringify(bootloader.config()));
+			}
 			delete config.resource;
-			var config = JSON.stringify(config,null, "\t");
+			config = JSON.stringify(config,null, "\t");
 			this.view("bootconfig.html",{
 				config : config
 			});
+		},
+		saveConfig : function(){
+			var config = jQuery("#configInput").val();
+			config = JSON.stringify(JSON.parse(config));
+			window.localStorage.setItem("bootConfig",config);
 		},
 		_remove_ : function(){
 			this.router.off();
