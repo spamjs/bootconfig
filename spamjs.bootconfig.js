@@ -1,8 +1,8 @@
 define({
 	name : "spamjs.bootconfig",
 	extend : "spamjs.view",
-	modules : ["jqrouter","jqtags.tab"]
-}).as(function(bootconfig,jqrouter,tab){
+	modules : ["jqrouter","jqtags.tab","jsutils.file"]
+}).as(function(bootconfig,jqrouter,tab,fileUtil){
 	
 	jqrouter.start(bootloader.config().appContext);
 	
@@ -43,14 +43,38 @@ define({
 		},
 		loadModuleApi : function(e,target,data){
 			var self = this;
-			_importStyle_("jqtags/jq-tab");
+			_importStyle_("jqtags/jq-tab","spamjs/bootconfig");
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					
 				}).done(function(){
+					var $demoCode = self.$$.find("[tab=demo-code]");
 					var TestSampleModule =  module(e.params.moduleName+".test");
 					if(TestSampleModule){
-						self.add("#testmodule",TestSampleModule.instance(data));
+						data.id = "testmodule";
+						self.add(TestSampleModule.instance(data));
+						var dff = [];
+						var srcFiles = [TestSampleModule.__file__];
+						srcFiles = srcFiles.concat(TestSampleModule.src);
+						for(var i in srcFiles){
+							(function(file){
+								if(file){
+									dff.push(fileUtil.get(TestSampleModule.path(file)).done(function(resp){
+										$demoCode.append("<h5>File: "+file+"</h5>");
+										var $newBlock =jQuery('<pre code></pre>');
+										$newBlock.text(resp);
+										$demoCode.append($newBlock);//.replace("\n", "<br />","g"));	
+									}));
+								}
+							})(srcFiles[i]);
+						}
+						jQuery.when.apply(jQuery,dff).done(function(){
+							console.log(self.$$.find("pre[code]"));
+							self.$$.find("pre[code]").each(function(i,elem){
+								hljs.highlightBlock(elem);
+							});
+						});
+						
 					}					
 				});
 			});
