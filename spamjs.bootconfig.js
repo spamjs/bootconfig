@@ -1,8 +1,8 @@
 define({
 	name : "spamjs.bootconfig",
 	extend : "spamjs.view",
-	modules : ["jqrouter"]
-}).as(function(bootconfig,jqrouter){
+	modules : ["jqrouter","jqtags.tab"]
+}).as(function(bootconfig,jqrouter,tab){
 	
 	jqrouter.start(bootloader.config().appContext);
 	
@@ -43,6 +43,7 @@ define({
 		},
 		loadModuleApi : function(e,target,data){
 			var self = this;
+			_importStyle_("jqtags/jq-tab");
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					

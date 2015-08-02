@@ -2,6 +2,6 @@
 	"name": "spamjs/bootconfig",
 	"spamjs/bootconfig": {
 		"js": ["spamjs.bootconfig.js"],
-		"on": ["webmodules/jqrouter", "spamjs/view"]
+		"on": ["webmodules/jqrouter", "spamjs/view","jatags/jq-tab"]
 	}
 }
