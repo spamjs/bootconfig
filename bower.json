@@ -9,8 +9,8 @@
 	},
 	"dependencies": {
 		"webmodules-bootconfig": ">=0.0.6",
-		"webmodules-jqrouter": "latest",
-		"spamjs-view": "latest"
+		"webmodules-jqrouter": ">=1.0.5",
+		"spamjs-view": ">=0.0.4"
 	},
 	"keywords": ["bootloader"],
 	"license": "MIT"
