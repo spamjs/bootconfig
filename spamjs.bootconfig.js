@@ -69,7 +69,6 @@ define({
 							})(srcFiles[i]);
 						}
 						jQuery.when.apply(jQuery,dff).done(function(){
-							console.log(self.$$.find("pre[code]"));
 							self.$$.find("pre[code]").each(function(i,elem){
 								hljs.highlightBlock(elem);
 							});
