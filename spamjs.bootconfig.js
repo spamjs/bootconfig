@@ -44,7 +44,6 @@ define({
 		loadModuleApi : function(e,target,data){
 			var self = this;
 			module(e.params.moduleName,function(SampleModule){
-				console.log("loadModuleApi",e.params.moduleName);
 				self.view("module.info.html",{
 					
 				}).done(function(){
