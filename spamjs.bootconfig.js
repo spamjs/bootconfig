@@ -1,5 +1,5 @@
 define({
-	name : "bootconfig",
+	name : "spamjs.bootconfig",
 	extend : "spamjs.view",
 	modules : ["jqrouter"]
 }).as(function(bootconfig,jqrouter){
@@ -9,7 +9,9 @@ define({
 	return {
 		routerBase : "boot",
 		routerEvents : {
-			"/config" : "loadbootconfig"
+			"/config" : "loadbootconfig",
+			"/module/{moduleName}/*" : "loadModule",
+			"/api/{moduleName}/*" : "loadModuleApi"
 		},
 		events : {
 			"click #saveConfig" : "saveConfig"
@@ -33,6 +35,26 @@ define({
 				config : config
 			});
 		},
+		loadModule : function(e,target,data){
+			var SampleModule = module(e.params.moduleName);
+			if(SampleModule){
+				this.add(SampleModule.instance(data));
+			}
+		},
+		loadModuleApi : function(e,target,data){
+			var self = this;
+			module(e.params.moduleName,function(SampleModule){
+				console.log("loadModuleApi",e.params.moduleName);
+				self.view("module.info.html",{
+					
+				}).done(function(){
+					var TestSampleModule =  module(e.params.moduleName+".test");
+					if(TestSampleModule){
+						self.add("#testmodule",TestSampleModule.instance(data));
+					}					
+				});
+			});
+		},
 		saveConfig : function(){
 			var config = jQuery("#configInput").val();
 			config = JSON.stringify(JSON.parse(config));
@@ -43,4 +65,5 @@ define({
 		}
 	};
 	
-})
+	
+});

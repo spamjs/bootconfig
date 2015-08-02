@@ -1,11 +1,11 @@
 {
-	"name": "webmodules-bootconfig",
-	"main": "bootconfig.js",
+	"name": "spamjs-bootconfig",
+	"main": "spamjs.bootconfig.js",
 	"description": "Module Config Editor",
 	"authors": ["lalit.tanwar07@gmail.com"],
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/webmodule/bootconfig.git"
+		"url": "git://github.com/spamjs/bootconfig.git"
 	},
 	"dependencies": {
 		"webmodules-bootconfig": "latest",

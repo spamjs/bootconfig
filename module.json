@@ -1,7 +1,7 @@
 {
-	"name": "webmodules/bootconfig",
-	"webmodules/bootconfig": {
-		"js": ["bootconfig.js"],
+	"name": "spamjs/bootconfig",
+	"spamjs/bootconfig": {
+		"js": ["spamjs.bootconfig.js"],
 		"on": ["webmodules/jqrouter", "spamjs/view"]
 	}
 }

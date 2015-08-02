@@ -1,7 +1,7 @@
 {
-	"name": "webmodules/bootconfig",
-	"type": "library",
-	"description": "Module loader",
+	"name": "spamjs/bootconfig",
+	"type": "spamjs",
+	"description": "Module loader configure",
 	"keywords": ["rudra", "API"],
 	"license": "MIT",
 	"authors": [
