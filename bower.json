@@ -8,7 +8,7 @@
 		"url": "git://github.com/spamjs/bootconfig.git"
 	},
 	"dependencies": {
-		"webutilz-showdown": ">=1.2.2"
+		"webutilz-showdown": ">=1.2.2",
 		"webmodules-bootloader": ">=0.0.6",
 		"webmodules-jqrouter": ">=1.0.5",
 		"spamjs-view": ">=0.0.5",
