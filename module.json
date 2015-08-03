@@ -6,6 +6,6 @@
 	},
 	"spamjs/bootconfig/highlight": {
 		"js": ["highlight/highlight.pack.js"],
-		"css": ["highlight/styles/default.css"]
+		"css": ["highlight/styles/github.css"]
 	}
 }
