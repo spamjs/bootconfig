@@ -43,7 +43,7 @@ define({
 		},
 		loadModuleApi : function(e,target,data){
 			var self = this;
-			_importStyle_("jqtags/jq-tab","spamjs/bootconfig");
+			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig");
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					

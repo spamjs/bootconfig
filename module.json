@@ -4,6 +4,9 @@
 		"js": ["spamjs.bootconfig.js"],
 		"on": ["webmodules/jqrouter", "spamjs/view", "jatags/jq-tab", "spamjs/bootconfig/highlight"]
 	},
+	"spamjs/bootconfig/css": {
+		"on": ["jatags/jq-tab/css"]
+	},
 	"spamjs/bootconfig/highlight": {
 		"js": ["highlight/highlight.pack.js"],
 		"css": ["highlight/styles/github.css"]
