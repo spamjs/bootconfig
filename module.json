@@ -2,9 +2,10 @@
 	"name": "spamjs/bootconfig",
 	"spamjs/bootconfig": {
 		"js": ["spamjs.bootconfig.js"],
-		"on": ["webmodules/jqrouter", "spamjs/view", "jqtags/jq-tab", "spamjs/bootconfig/highlight"]
+		"on": ["webutilz/showdown","webmodules/jqrouter", "spamjs/view", "jqtags/jq-tab", "spamjs/bootconfig/highlight"]
 	},
 	"spamjs/bootconfig/css": {
+		"css" : ["moduleconfig.css"],
 		"on": ["jqtags/jq-tab/css"]
 	},
 	"spamjs/bootconfig/highlight": {

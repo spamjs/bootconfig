@@ -43,7 +43,7 @@ define({
 		},
 		loadModuleApi : function(e,target,data){
 			var self = this;
-			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig");
+			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css");
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					
@@ -74,7 +74,16 @@ define({
 							});
 						});
 						
-					}					
+					}
+					module("showdown", function(showdown){
+						var converter = new showdown.Converter();
+						fileUtil.get(SampleModule.path("README.md")).done(function(resp){
+							jQuery("[tab=info]").html(converter.makeHtml(resp));
+							self.$$.find("pre code").each(function(i,elem){
+								hljs.highlightBlock(elem);
+							});
+						});
+					});
 				});
 			});
 		},
