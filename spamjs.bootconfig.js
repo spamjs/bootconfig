@@ -10,6 +10,7 @@ define({
 		routerBase : "boot",
 		routerEvents : {
 			"/config" : "loadbootconfig",
+      "/modules" : "loadModuleList",
 			"/module/{moduleName}/*" : "loadModule",
 			"/api/{moduleName}/*" : "loadModuleApi"
 		},
@@ -35,6 +36,22 @@ define({
 				config : config
 			});
 		},
+    loadModuleList : function(){
+      var ModuleS = [];
+      var bundles = bootloader.config().resource.bundles;
+      for(var pck in bundles){
+        var js = bundles[pck].js;
+        for(var file in js){
+          if(js[file].indexOf(".test.js")>0){
+            var modPath = js[file].replace(".test.js","").split("/");
+            ModuleS.push(modPath[modPath.length-1]);
+          }
+        }
+      }
+      this.$$.loadTemplate(
+        this.path("app.html"), { modules : ModuleS}
+      );
+    },
 		loadModule : function(e,target,data){
 			var SampleModule = module(e.params.moduleName);
 			if(SampleModule){
@@ -49,32 +66,30 @@ define({
 					
 				}).done(function(){
 					var $demoCode = self.$$.find("[tab=demo-code]");
-					var TestSampleModule =  module(e.params.moduleName+".test");
-					if(TestSampleModule){
-						data.id = "testmodule";
-						self.add(TestSampleModule.instance(data));
-						var dff = [];
-						var srcFiles = [TestSampleModule.__file__];
-						srcFiles = srcFiles.concat(TestSampleModule.src);
-						for(var i in srcFiles){
-							(function(file){
-								if(file){
-									dff.push(fileUtil.get(TestSampleModule.path(file)).done(function(resp){
-										$demoCode.append("<h5>File: "+file+"</h5>");
-										var $newBlock =jQuery('<pre code></pre>');
-										$newBlock.text(resp);
-										$demoCode.append($newBlock);//.replace("\n", "<br />","g"));	
-									}));
-								}
-							})(srcFiles[i]);
-						}
-						jQuery.when.apply(jQuery,dff).done(function(){
-							self.$$.find("pre[code]").each(function(i,elem){
-								hljs.highlightBlock(elem);
-							});
-						});
-						
-					}
+					module(e.params.moduleName+".test", function(TestSampleModule){
+            data.id = "testmodule";
+            self.add(TestSampleModule.instance(data));
+            var dff = [];
+            var srcFiles = [TestSampleModule.__file__];
+            srcFiles = srcFiles.concat(TestSampleModule.src);
+            for(var i in srcFiles){
+              (function(file){
+                if(file){
+                  dff.push(fileUtil.get(TestSampleModule.path(file)).done(function(resp){
+                    $demoCode.append("<h5>File: "+file+"</h5>");
+                    var $newBlock =jQuery('<pre code></pre>');
+                    $newBlock.text(resp);
+                    $demoCode.append($newBlock);//.replace("\n", "<br />","g"));
+                  }));
+                }
+              })(srcFiles[i]);
+            }
+            jQuery.when.apply(jQuery,dff).done(function(){
+              self.$$.find("pre[code]").each(function(i,elem){
+                hljs.highlightBlock(elem);
+              });
+            });
+          });
 					module("showdown", function(showdown){
 						var converter = new showdown.Converter();
 						fileUtil.get(SampleModule.path("README.md")).done(function(resp){
