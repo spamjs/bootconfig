@@ -44,7 +44,7 @@ define({
         for(var file in js){
           if(js[file].indexOf(".test.js")>0){
             var modPath = js[file].replace(".test.js","").split("/");
-            ModuleS.push(modPath[modPath.length-1]);
+            ModuleS.push({ name : modPath[modPath.length-1], packageInfo : bundles[pck].packageInfo});
           }
         }
       }
@@ -61,6 +61,7 @@ define({
 		loadModuleApi : function(e,target,data){
 			var self = this;
 			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css");
+      console.error(e,target,data)
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					
