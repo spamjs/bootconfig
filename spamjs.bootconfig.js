@@ -26,7 +26,7 @@ define({
 			}
 		},
 		loadbootconfig : function(){
-			var config  = JSON.parse(window.localStorage.getItem("bootConfig"));
+			var config  = JSON.parse(window.localStorage.getItem(bootloader.config().bootConfigKey));
 			if(!config){
 				config = JSON.parse(JSON.stringify(bootloader.config()));
 			}
@@ -106,7 +106,7 @@ define({
 		saveConfig : function(){
 			var config = jQuery("#configInput").val();
 			config = JSON.stringify(JSON.parse(config));
-			window.localStorage.setItem("bootConfig",config);
+			window.localStorage.setItem(bootloader.config().bootConfigKey,config);
 		},
 		_remove_ : function(){
 			this.router.off();

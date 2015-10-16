@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"webutilz-showdown": ">=1.2.2",
-		"webmodules-bootloader": ">=0.0.6",
+		"webmodules-bootloader": ">=0.1.5",
 		"webmodules-jqrouter": ">=1.0.5",
 		"spamjs-view": ">=0.0.5",
 		"jqtags-jq-tab": ">=0.0.4"
