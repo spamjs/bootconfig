@@ -58,10 +58,10 @@ define({
 				this.add(SampleModule.instance(data));
 			}
 		},
-		loadModuleApi : function(e,target,data){
+		loadModuleApi : function(e,target,data, postdata){
 			var self = this;
 			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css");
-      console.error(e,target,data)
+      console.error(e,target,data,postdata)
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					
@@ -93,12 +93,19 @@ define({
           });
 					module("showdown", function(showdown){
 						var converter = new showdown.Converter();
+            converter.setOption('tables', true);
 						fileUtil.get(SampleModule.path("README.md")).done(function(resp){
-							jQuery("[tab=info]").html(converter.makeHtml(resp));
-							self.$$.find("pre code").each(function(i,elem){
+							jQuery("[tab=info] [id=readme]").html(converter.makeHtml(resp));
+							self.$$.find("[id=readme] pre code").each(function(i,elem){
 								hljs.highlightBlock(elem);
 							});
 						});
+            fileUtil.get(SampleModule.path("API.md")).done(function(resp){
+              jQuery("[tab=info] [id=apis]").html(converter.makeHtml(resp));
+              self.$$.find("[id=apis] pre code").each(function(i,elem){
+                hljs.highlightBlock(elem);
+              });
+            });
 					});
 				});
 			});
