@@ -4,8 +4,6 @@ define({
 	modules : ["jqrouter","jqtags.tab","jsutils.file"]
 }).as(function(bootconfig,jqrouter,tab,fileUtil){
 	
-	jqrouter.start(bootloader.config().appContext);
-
 	return {
 		routerBase : "boot",
 		routerEvents : {
@@ -18,6 +16,7 @@ define({
 			"click #saveConfig" : "saveConfig"
 		},
 		_init_ : function(){
+      jqrouter.start(bootloader.config().appContext);
       _importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css","webmodules/bootstrap");
 			if(this.options.routerBase){
 				this.routerBase = this.options.routerBase;
