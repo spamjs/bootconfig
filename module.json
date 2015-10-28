@@ -2,6 +2,7 @@
 	"name": "spamjs/bootconfig",
 	"spamjs/bootconfig": {
 		"js": ["spamjs.bootconfig.js"],
+    "html": ["app.html","module.info.html"],
 		"on": ["webutilz/showdown","webmodules/jqrouter", "spamjs/view", "jqtags/jq-tab", "spamjs/bootconfig/highlight"]
 	},
 	"spamjs/bootconfig/css": {

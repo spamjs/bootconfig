@@ -1,10 +1,18 @@
-<input jqr-change-param="module" value="" >
-<ul>
+<ul class="list-group">
     <!-- for(var i in data.modules){ -->
     <li>
-        <a jqr-post href="/boot/api/{{data.modules[i].name}}" data-version="{{data.modules[i].packageInfo.bowerVersion}}">{{data.modules[i].name}}</a>
-        ( bower : {{data.modules[i].packageInfo.bowerName}}#{{data.modules[i].packageInfo.bowerVersion}},
-            composer : {{data.modules[i].packageInfo.composerName}}#{{data.modules[i].packageInfo.composerVersion}},)
+        <a class="list-group-item" jqr-go href="/boot/api/{{data.modules[i].name}}"
+           data-version="{{data.modules[i].packageInfo.bowerVersion}}">
+            <h4 class="list-group-item-heading">{{data.modules[i].name}}</h4>
+            <p class="list-group-item-text">
+                <!-- if(data.modules[i].packageInfo.bowerName ){ -->
+                <i>bower</i> :<span class="label label-warning">{{data.modules[i].packageInfo.bowerName}}#{{data.modules[i].packageInfo.bowerVersion}}</span>
+                <!-- } if(data.modules[i].packageInfo.composerName ){ -->
+                <i>composer</i> : <span class="label label-warning">{{data.modules[i].packageInfo.composerName}}#{{data.modules[i].packageInfo.composerVersion}}</span>
+                <!-- } -->
+            </p>
+        </a>
+
     </li>
     <!-- } -->
 </ul>

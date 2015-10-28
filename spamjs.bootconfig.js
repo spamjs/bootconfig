@@ -5,7 +5,9 @@ define({
 }).as(function(bootconfig,jqrouter,tab,fileUtil){
 	
 	jqrouter.start(bootloader.config().appContext);
-	
+
+  _importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css","webmodules/bootstrap");
+
 	return {
 		routerBase : "boot",
 		routerEvents : {
@@ -50,7 +52,9 @@ define({
       }
       this.$$.loadTemplate(
         this.path("app.html"), { modules : ModuleS}
-      );
+      ).done(function(){
+          jQuery("#spamjs_org_breadcrumb .moduleName").addClass("hide").text("");
+       });
     },
 		loadModule : function(e,target,data){
 			var SampleModule = module(e.params.moduleName);
@@ -60,8 +64,8 @@ define({
 		},
 		loadModuleApi : function(e,target,data, postdata){
 			var self = this;
-			_importStyle_("jqtags/jq-tab","jqtags/jq-tab/css","spamjs/bootconfig","spamjs/bootconfig/css");
-      console.error(e,target,data,postdata)
+      console.error(e,target,data,postdata);
+      jQuery(".breadcrumb .moduleName").removeClass("hide").text(e.params.moduleName);
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
 					
