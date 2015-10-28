@@ -6,9 +6,9 @@
             <h4 class="list-group-item-heading">{{data.modules[i].name}}</h4>
             <p class="list-group-item-text">
                 <!-- if(data.modules[i].packageInfo.bowerName ){ -->
-                <i>bower</i> :<span class="label label-warning">{{data.modules[i].packageInfo.bowerName}}#{{data.modules[i].packageInfo.bowerVersion}}</span>
+                <i>bower</i> :<span class="label label-warning">{{data.modules[i].packageInfo.bowerName}}#{{data.modules[i].packageInfo.bowerVersion || 'latest'}}</span>
                 <!-- } if(data.modules[i].packageInfo.composerName ){ -->
-                <i>composer</i> : <span class="label label-warning">{{data.modules[i].packageInfo.composerName}}#{{data.modules[i].packageInfo.composerVersion}}</span>
+                <i> composer</i> : <span class="label label-warning">{{data.modules[i].packageInfo.composerName}}#{{data.modules[i].packageInfo.composerVersion || 'latest'}}</span>
                 <!-- } -->
             </p>
         </a>
