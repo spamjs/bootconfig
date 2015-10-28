@@ -68,7 +68,8 @@ define({
       jQuery(".breadcrumb .moduleName").removeClass("hide").text(e.params.moduleName);
 			module(e.params.moduleName,function(SampleModule){
 				self.view("module.info.html",{
-					
+					value : e.params._  || "demo",
+          modulePath : self.options.routerBase + "/api/" + e.params.moduleName
 				}).done(function(){
 					var $demoCode = self.$$.find("[tab=demo-code]");
 					module(e.params.moduleName+".test", function(TestSampleModule){

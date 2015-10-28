@@ -1,12 +1,12 @@
-<jq-tab value="demo" id="sampeltab">
+<jq-tab value="{{data.value}}" id="sampeltab">
 	<jq-tab-heads>
-		<jq-tab-head value="info">
+		<jq-tab-head value="info" jqr-go="{{data.modulePath}}/info">
 			Info
 		</jq-tab-head>
-		<jq-tab-head value="demo">
+		<jq-tab-head value="demo"  jqr-go="{{data.modulePath}}/demo">
 			Demo
 		</jq-tab-head>
-		<jq-tab-head value="demo-code">
+		<jq-tab-head value="demo-code" jqr-go="{{data.modulePath}}/demo-code">
 			Demo Source Code
 		</jq-tab-head>
 	</jq-tab-heads>
