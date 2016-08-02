@@ -1,3 +1,17 @@
-<input id="saveConfig" type="button" value="Save Config"/>
+<form style="margin: 10px">
+    <h3>
+        Bootloader Config
+    </h3>
+    <label> DEBUG
+        <input class="appField" id="debug"  type="checkbox" {{data.config.debug ? "checked" : ""}}/>
+    </label>
+
+    <label>
+        <input class="appField" id="resourceUrl"  type="text" value="{{data.config.resourceUrl}}"/>
+    </label>
+
+    <input id="saveConfig" type="button" value="Save Config"/>
+
+</form>
 <hr/>
-<textarea id=configInput style="width:100%" rows=30 >{{data.config}}</textarea>
+<textarea id=configInput style="width:100%" rows=40 style="height: 100px" >{{data.configString}}</textarea>
