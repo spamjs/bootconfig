@@ -10,7 +10,15 @@
         <input class="appField" id="resourceUrl"  type="text" value="{{data.config.resourceUrl}}"/>
     </label>
 
-    <input id="saveConfig" type="button" value="Save Config"/>
+    <label> LIVE RELOAD
+        <input class="appField" id="livereload"  type="checkbox" {{data.config.livereload ? "checked" : ""}}/>
+    </label>
+
+    <label>
+        <input class="appField" id="livereloadUrl"  type="text" value="{{data.config.livereloadUrl}}"/>
+    </label>
+
+    <input id="saveConfig" type="button" value="Save Config" style="float: right"/>
 
 </form>
 <hr/>

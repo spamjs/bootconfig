@@ -119,13 +119,13 @@ define({
         appDebug : function(e){
             var config = jQuery("#configInput").val();
             config = JSON.parse(config);
-            switch(e.target.id){
-                case "debug" : {
-                    config.debug = e.target.checked;
+            switch((e.target.type).toLowerCase()){
+                case "checkbox" : {
+                    config[e.target.id] = e.target.checked;
                     break;
                 }
-                case "resourceUrl" : {
-                    config.resourceUrl = e.target.value;
+                case "text" : {
+                    config[e.target.id] = e.target.value;
                     break;
                 }
             }
