@@ -1,25 +1,63 @@
-<form style="margin: 10px">
+<style>
+    .view-spamjs-bootconfig.view-id-bootconfig {
+        text-align: left;
+        font-size: 12px;
+        color: #000 !important;
+        display: block;
+        margin: 0px 13px;
+        padding: 0px;
+        height: 100%;
+    }
+
+    .view-spamjs-bootconfig.view-id-bootconfig label {
+        float: left;
+        margin: 5px;
+    }
+    .view-spamjs-bootconfig.view-id-bootconfig label span {
+        float: left;
+        margin: 15px;
+    }
+
+    textarea#configInput {
+        width: 100%;
+        min-height: 120px;
+        font-size: 12px;
+        height: calc(100% - 150px);
+        background-color: #040402;
+        color: #FFF;
+    }
+
+    .appField {
+        min-width: 200px !important;
+        height: 36px;
+    }
+
+    #saveConfig {
+        height: 36px;
+    }
+</style>
+<form style="float: left;">
     <h3>
         Bootloader Config
     </h3>
-    <label> DEBUG
-        <input class="appField" id="debug"  type="checkbox" {{data.config.debug ? "checked" : ""}}/>
+    <label><span>DEBUG</span><input class="appField" id="debug" type="checkbox" {{data.config.debug ? "checked" : ""}}/>
     </label>
 
     <label>
-        <input class="appField" id="resourceUrl"  type="text" value="{{data.config.resourceUrl}}"/>
+        <input class="appField" id="resourceUrl" type="text" value="{{data.config.resourceUrl}}"/>
     </label>
 
-    <label> LIVE RELOAD
-        <input class="appField" id="livereload"  type="checkbox" {{data.config.livereload ? "checked" : ""}}/>
+    <label> <span>LIVE RELOAD</span> <input class="appField" id="livereload" type="checkbox" {{data.config.livereload ? "checked" :
+        ""}}/>
     </label>
 
     <label>
-        <input class="appField" id="livereloadUrl"  type="text" value="{{data.config.livereloadUrl}}"/>
+        <input class="appField" id="livereloadUrl" type="text" value="{{data.config.livereloadUrl}}"/>
     </label>
-
-    <input id="saveConfig" type="button" value="Save Config" style="float: right"/>
+    <label>
+        <input id="saveConfig" type="button" value="Save Config" style="float: right"/>
+    </label>
 
 </form>
 <hr/>
-<textarea id=configInput style="width:100%" rows=40 style="height: 100px" >{{data.configString}}</textarea>
+<textarea id=configInput rows=40>{{data.configString}}</textarea>
